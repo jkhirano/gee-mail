@@ -5,14 +5,64 @@
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
-      };
-    </script>
+				// We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+
+// For loops to show all emails by date, sender, subject and body				
+for (var i = 0; i<geemails.length; i++){
+
+var dateBox = document.createElement('div');
+dateBox.className = 'header';
+dateBox.innerHTML = geemails[i].date;
+document.body.appendChild(dateBox);
+
+var senderBox = document.createElement('div');
+senderBox.className = 'header';
+senderBox.innerHTML = geemails[i].sender;
+document.body.appendChild(senderBox);
+
+var subjectBox = document.createElement('div');
+subjectBox.className = 'header';
+subjectBox.innerHTML = geemails[i].subject;
+document.body.appendChild(subjectBox);
+
+var bodyBox = document.createElement('div');
+bodyBox.className = 'inner';
+bodyBox.innerHTML = geemails[i].body;
+subjectBox.appendChild(bodyBox);
+}
+
+// grab by class
+var contentBox = document.getElementsByClassName('header');
+
+// add event
+for (var i = 0; i<contentBox.length; i++){
+	contentBox[i].addEventListener('click', showContents);
+}
+
+// add function
+function showContents(){
+	var contents = this.querySelector('.inner');
+	if(contents.style.display === 'block'){contents.style.display = 'none';
+  }else{
+  contents.style.display = 'block';
+  }
+}
+
+
+
+
+
+};
+  </script>
 	</head>
 	<body>
-		<div class="container" id="main">
-			Build Me!
-		</div>
+
+		<h1>GeeMail</h1>
+
+		<!-- <div id="date"></div>
+		<div id="subject2"></div>
+		<div id="sender"></div>
+		<div id="body"></div> -->
+
 	</body>
 </html>
