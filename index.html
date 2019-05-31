@@ -57,12 +57,37 @@ function showContents(){
 	
 
 // this is creating something every 3 seconds but can't see it:
+
 setInterval(function(getNewMessage){
-	var newBox1 = document.createElem('div');
+
+var msg = getNewMessage();
+
+var msgBox = document.createElement('div');
+	msgBox.className = 'msgDiv';
+	body.appendChild(msgBox);
+
+	var newBox1 = document.createElement('div');
 	newBox1.className = 'header';
-	newBox1.innerHTML = geemails[i].date;
-	document.body.appendChild(newBox1);
+	newBox1.innerHTML = msg.date;
+	msgBox.appendChild(newBox1);
+
+	var newBox2 = document.createElement('div');
+	newBox2.className = 'header';
+	newBox2.innerHTML = msg.sender;
+	msgBox.appendChild(newBox2);
+
+	var newBox3 = document.createElement('div');
+	newBox3.className = 'header';
+	newBox3.innerHTML = msg.subject;
+	msgBox.appendChild(newBox3);
+
+	var newBox4 = document.createElement('div');
+	newBox4.className = 'body';
+	newBox4.innerHTNL = msg.body;
+	newBox3.appendChild(newbox4);
+
 }, 3000);
+
 
 };
   </script>
