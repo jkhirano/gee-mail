@@ -10,20 +10,24 @@
 // For loops to show all emails by date, sender, subject and body				
 for (var i = 0; i<geemails.length; i++){
 
+var emailBox = document.createElement('div');
+emailBox.className = 'msgDiv';
+document.body.appendChild(emailBox);
+
 var dateBox = document.createElement('div');
 dateBox.className = 'header';
 dateBox.innerHTML = geemails[i].date;
-document.body.appendChild(dateBox);
+emailBox.appendChild(dateBox);
 
 var senderBox = document.createElement('div');
 senderBox.className = 'header';
 senderBox.innerHTML = geemails[i].sender;
-document.body.appendChild(senderBox);
+emailBox.appendChild(senderBox);
 
 var subjectBox = document.createElement('div');
 subjectBox.className = 'header';
 subjectBox.innerHTML = geemails[i].subject;
-document.body.appendChild(subjectBox);
+emailBox.appendChild(subjectBox);
 
 var bodyBox = document.createElement('div');
 bodyBox.className = 'inner';
@@ -49,22 +53,22 @@ function showContents(){
 }
 
 
-// create inbox counter
+// Inbox counter:
 	var counter = document.createElement('div');
 	counter.className = 'boxCount';
 	counter.innerHTML = geemails.length;
 	document.body.appendChild(counter);
 	
 
-// this is creating something every 3 seconds but can't see it:
+// Generation of new emails:
 
-setInterval(function(getNewMessage){
+setInterval(function(){
 
 var msg = getNewMessage();
 
 var msgBox = document.createElement('div');
 	msgBox.className = 'msgDiv';
-	body.appendChild(msgBox);
+	document.body.appendChild(msgBox);
 
 	var newBox1 = document.createElement('div');
 	newBox1.className = 'header';
@@ -84,7 +88,9 @@ var msgBox = document.createElement('div');
 	var newBox4 = document.createElement('div');
 	newBox4.className = 'body';
 	newBox4.innerHTNL = msg.body;
-	newBox3.appendChild(newbox4);
+	newBox3.appendChild(newBox4);
+
+counter.innerHTML = ++geemails.length;
 
 }, 3000);
 
