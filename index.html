@@ -7,17 +7,19 @@
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
 				// We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 
+// Inbox counter:
+var counter = document.createElement('div');
+	counter.className = 'boxCount';
+	counter.innerHTML = geemails.length;
+	document.body.appendChild(counter);
+
+
 // For loops to show all emails by date, sender, subject and body				
 for (var i = 0; i<geemails.length; i++){
 
 var emailBox = document.createElement('div');
 emailBox.className = 'msgDiv';
 document.body.appendChild(emailBox);
-
-var dateBox = document.createElement('div');
-dateBox.className = 'header';
-dateBox.innerHTML = geemails[i].date;
-emailBox.appendChild(dateBox);
 
 var senderBox = document.createElement('div');
 senderBox.className = 'header';
@@ -29,19 +31,27 @@ subjectBox.className = 'header';
 subjectBox.innerHTML = geemails[i].subject;
 emailBox.appendChild(subjectBox);
 
+var dateBox = document.createElement('div');
+dateBox.className = 'header';
+dateBox.innerHTML = geemails[i].date;
+emailBox.appendChild(dateBox);
+
 var bodyBox = document.createElement('div');
 bodyBox.className = 'inner';
 bodyBox.innerHTML = geemails[i].body;
 subjectBox.appendChild(bodyBox);
 }
 
+
 // grab by class
 var contentBox = document.getElementsByClassName('header');
+
 
 // add event
 for (var i = 0; i<contentBox.length; i++){
 	contentBox[i].addEventListener('click', showContents);
 }
+
 
 // add function
 function showContents(){
@@ -51,13 +61,6 @@ function showContents(){
   contents.style.display = 'block';
   }
 }
-
-
-// Inbox counter:
-	var counter = document.createElement('div');
-	counter.className = 'boxCount';
-	counter.innerHTML = geemails.length;
-	document.body.appendChild(counter);
 	
 
 // Generation of new emails:
@@ -70,11 +73,6 @@ var msgBox = document.createElement('div');
 	msgBox.className = 'msgDiv';
 	document.body.appendChild(msgBox);
 
-	var newBox1 = document.createElement('div');
-	newBox1.className = 'header';
-	newBox1.innerHTML = msg.date;
-	msgBox.appendChild(newBox1);
-
 	var newBox2 = document.createElement('div');
 	newBox2.className = 'header';
 	newBox2.innerHTML = msg.sender;
@@ -84,6 +82,11 @@ var msgBox = document.createElement('div');
 	newBox3.className = 'header';
 	newBox3.innerHTML = msg.subject;
 	msgBox.appendChild(newBox3);
+
+	var newBox1 = document.createElement('div');
+	newBox1.className = 'header';
+	newBox1.innerHTML = msg.date;
+	msgBox.appendChild(newBox1);
 
 	var newBox4 = document.createElement('div');
 	newBox4.className = 'body';
@@ -102,9 +105,11 @@ counter.innerHTML = ++geemails.length;
 
 		<h1>GeeMail</h1>
 
-		<!-- <div class = "inboxCount">
-		<i class = "fas fa-inbox"></i>
-		</div> -->
+<div id="sidebar">
+<div id="inbox"></div>
+<div id="sent"></div>
+<div id="drafts"></div>
+</div>
 
 	</body>
 </html>
