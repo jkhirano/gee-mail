@@ -54,7 +54,15 @@ function showContents(){
 	counter.className = 'boxCount';
 	counter.innerHTML = geemails.length;
 	document.body.appendChild(counter);
+	
 
+// this is creating something every 3 seconds but can't see it:
+setInterval(function(getNewMessage){
+	var newBox1 = document.createElem('div');
+	newBox1.className = 'header';
+	newBox1.innerHTML = geemails[i].date;
+	document.body.appendChild(newBox1);
+}, 3000);
 
 };
   </script>
