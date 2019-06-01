@@ -2,6 +2,7 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+		<link href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Raleway&display=swap" rel="stylesheet">
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
@@ -11,7 +12,7 @@
 var counter = document.createElement('div');
 	counter.className = 'boxCount';
 	counter.innerHTML = geemails.length;
-	document.body.appendChild(counter);
+	inbCounter.appendChild(counter);
 
 
 // For loops to show all emails by date, sender, subject and body				
@@ -44,7 +45,7 @@ subjectBox.appendChild(bodyBox);
 
 
 // grab by class
-var contentBox = document.getElementsByClassName('header');
+var contentBox = document.getElementsByClassName('msgDiv');
 
 
 // add event
@@ -105,10 +106,18 @@ counter.innerHTML = ++geemails.length;
 
 		<h1>GeeMail</h1>
 
-<div id="sidebar">
-<div id="inbox"></div>
-<div id="sent"></div>
-<div id="drafts"></div>
+<div id="parent">
+    <div class="col">
+      <p class="menu" id='inbCounter'><i class="fas fa-inbox"></i>
+		Inbox</p>
+      <p class="menu">Sent</p>
+      <p class="menu">Drafts</p>
+    </div>
+    <div class="col">
+      <p class="menu">
+		  <!-- <div class="msgDiv"></div> -->
+	  </p>
+	</div>
 </div>
 
 	</body>
