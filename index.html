@@ -72,29 +72,38 @@ var msg = getNewMessage();
 
 var msgBox = document.createElement('div');
 	msgBox.className = 'msgDiv';
+	msgBox.addEventListener('click', showContents);
 	document.body.appendChild(msgBox);
+
+	var newBox1 = document.createElement('div');
+	newBox1.className = 'header';
+	newBox1.innerHTML = msg.sender;
+	msgBox.appendChild(newBox1);
 
 	var newBox2 = document.createElement('div');
 	newBox2.className = 'header';
-	newBox2.innerHTML = msg.sender;
+	newBox2.innerHTML = msg.subject;
 	msgBox.appendChild(newBox2);
 
 	var newBox3 = document.createElement('div');
 	newBox3.className = 'header';
-	newBox3.innerHTML = msg.subject;
+	newBox3.innerHTML = msg.date;
 	msgBox.appendChild(newBox3);
 
-	var newBox1 = document.createElement('div');
-	newBox1.className = 'header';
-	newBox1.innerHTML = msg.date;
-	msgBox.appendChild(newBox1);
-
 	var newBox4 = document.createElement('div');
-	newBox4.className = 'body';
-	newBox4.innerHTNL = msg.body;
-	newBox3.appendChild(newBox4);
+	newBox4.className = 'inner';
+	newBox4.innerHTML = msg.body;
+	msgBox.appendChild(newBox4);
 
 counter.innerHTML = ++geemails.length;
+
+function showContents(){
+	var contents2 = this.querySelector('.inner');
+	if(contents2.style.display === 'block'){contents2.style.display = 'none';
+	}else{
+  	contents2.style.display = 'block';
+  }
+}
 
 }, 3000);
 
